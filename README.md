@@ -1,7 +1,14 @@
 TODO: update README.md, speicifically to give new build instructions, once I've
 started porting code.
 
+C*IT
+====
 
+C*IT is short for C Curses Impulse Tracker.
+
+The goal of this project is to port Impulse Tracker to pure C, and to add
+ALSA/ncurses support, so as to make IT a viable option for the
+Raspberry Pi without the need for X.
 
 
 
