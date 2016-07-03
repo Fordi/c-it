@@ -1,15 +1,15 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Main Module                                                                 �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Main Module                                                                 │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386
 
 include switch.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         Object1 BYTE Public 'Data' USE16
 EndS
@@ -75,9 +75,9 @@ EndS
                 Extrn   MouseInput:Far, MouseClearEvents:Far
                 Extrn   GetKeyboardLock:Far, MIDIBufferEmpty:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  M_FunctionDivider:Far
                 Global  M_FunctionHandler:Far
@@ -85,14 +85,14 @@ EndS
                 Global  M_Object1ListDefault:Far
                 Public  ReleaseTimeSlice
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 Main DWORD Public 'Code' USE16
                         Assume CS:Main, DS:Nothing
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 DrawObjectList          Label   DWord
                         DD      DWord Ptr F_DrawBoxObject       ; 0
@@ -161,9 +161,9 @@ PostFunctionList        Label   DWord
 GlobalKeyList           DD      ?
 ReleaseTimeSlice        DB      0
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            M_FunctionDivider Far           ; Given DS:SI points to list
                                                 ; Carry set if none found
@@ -266,7 +266,7 @@ M_FunctionDivider4:             ;
 
 EndP            M_FunctionDivider
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            M_FunctionHandler Far
                 ARG     ObjectList:DWord
@@ -629,7 +629,7 @@ M_FunctionHandler15:
 
 EndP            M_FunctionHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            M_Object1ListDefault Far        ; Reqs: DI = offset of list
 
@@ -655,10 +655,10 @@ M_Object1List1:
 EndP            M_Object1List
 EndP            M_Object1ListDefault
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

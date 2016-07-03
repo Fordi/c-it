@@ -1,6 +1,6 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Help Module                                                                 �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Help Module                                                                 │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         .386
                         Jumps
@@ -10,9 +10,9 @@ include switch.inc
 Segment                 Object1 BYTE Public 'Data'
 EndS
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Extrn   M_Object1List:Far
                 Extrn   Glbl_SaveMode:Far
@@ -22,9 +22,9 @@ EndS
 
                 Extrn   O1_HelpList:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
                                  
                 Global  H_SetHelpContext:Far
                 Global  H_DrawHelp:Far
@@ -35,7 +35,7 @@ EndS
                 Global  H_HelpPgDn:Far
                 Global  H_HelpESC:Far
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment         Object1 BYTE Public 'Data'
 EndS
@@ -43,9 +43,9 @@ EndS
 Segment                 Help BYTE Public USE16 'Code'
                         Assume CS:Help, DS:Nothing
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
  ; Help contexts....
  ;  0 = Order list & Panning
@@ -700,7 +700,7 @@ HelpContext1_76         DB      5, '0-9, A-F', 0FFh, 9,   ' ', 0C8h, 0BDh, 'valu
 HelpContext1_77         DB      5, 'A-Z', 0FFh, 14,       ' ', 0C8h, 0BDh, 0
 HelpContext1_78         DB      5, '. (Period)', 0FFh, 7, ' Clear field(s)', 0
 HelpContext1_79         DB      5, '1', 0FFh, 16,         ' ', 0C3h, 'cut (^^^)', 0
-HelpContext1_80         DB      5, '`', 0FFh, 16,         ' ', 0C3h, 'off (', 0FFh, 3, '�) / ', 0B8h, 9Dh, 0
+HelpContext1_80         DB      5, '`', 0FFh, 16,         ' ', 0C3h, 'off (', 0FFh, 3, '═) / ', 0B8h, 9Dh, 0
 
 HelpContext1_81         DB      5, 'Spacebar', 0FFh, 9,      ' Use last note/', 8Fh, '/volume/', 0BDh, '/', 0BDh, 'value', 0
 HelpContext1_181        DB      5, 'Caps Lock+Key', 0FFh, 4, ' Preview ', 0A5h, 0
@@ -1194,7 +1194,7 @@ HelpContext12_4         DB      3, 'Editing ', 0ADh, '.', 0
 HelpContext12_5         DB      5, 81h, 'Y', 0FFh, 8, ' ', 084h, 'line', 0
 HelpContext12_6         DB      5, 80h, 'C', 0FFh, 9, ' Clear message', 0
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 DecodeWord80h           DB      "Alt-", 0
 DecodeWord81h           DB      "Ctrl-", 0
@@ -1323,9 +1323,9 @@ DecodeWords             DW      Offset DecodeWord80h, Offset DecodeWord81h
                         DW      Offset DecodeWordCCh, Offset DecodeWordCDh
                         DW      Offset DecodeWordCEh
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            H_DrawHelp Far
 
@@ -1419,7 +1419,7 @@ H_DecodeBufferEnd:
 EndP            H_DrawHelp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_Help Far
 
@@ -1440,7 +1440,7 @@ Proc            H_Help Far
 
 EndP            H_Help
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_HelpUp Far
 
@@ -1452,7 +1452,7 @@ Proc            H_HelpUp Far
 
 EndP            H_HelpUp
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_HelpDown Far
 
@@ -1487,7 +1487,7 @@ H_HelpDown1:
 EndP            H_HelpDown
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_HelpPgUp Far
 
@@ -1504,7 +1504,7 @@ H_HelpPgUp1:
 
 EndP            H_HelpPgUp
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_HelpPgDn Far
 
@@ -1518,7 +1518,7 @@ H_HelpPgDn1:
 
 EndP            H_HelpPgDn
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_HelpESC Far
 
@@ -1532,7 +1532,7 @@ Proc            H_HelpESC Far
 
 EndP            H_HelpESC
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            H_SetHelpContext Far
 
@@ -1543,10 +1543,10 @@ Proc            H_SetHelpContext Far
 
 EndP            H_SetHelpContext
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

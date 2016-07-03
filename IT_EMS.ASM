@@ -1,6 +1,6 @@
-;�����������������������������������������������������������������������������Ŀ
-;� EMS Module                                                                  �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ EMS Module                                                                  │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 include switch.inc
 
@@ -19,9 +19,9 @@ include switch.inc
                         Jumps
                         .386
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         Object1 BYTE Public 'Data'
                 Extrn   EMSErrorValue:Word
@@ -38,9 +38,9 @@ EndS
 
                 Extrn   O1_EMSWarningMessage
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  E_AllocateEMS:Far
                 Global  E_InitEMS:Far
@@ -63,14 +63,14 @@ IF EMSDEBUG
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 EMS WORD Public 'Code' USE16
                         Assume CS:EMS, DS:Nothing
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 CREATENEWLOGFILE        EQU     0
 include debug.inc
@@ -99,9 +99,9 @@ EMSCorrespondenceList   Label   Word
         Page3   DB      0, 0
                 DW      3
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            E_InitEMS Far
 
@@ -245,7 +245,7 @@ E_InitEMS1:
 EndP            E_InitEMS
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_GetFreeEMS Far        ; Returns kb free..
 
@@ -276,7 +276,7 @@ E_GetFreeEMS1:
 
 EndP            E_GetFreeEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_ReleaseEMS Far                ; AX = handle.
 
@@ -302,7 +302,7 @@ E_ReleaseEMS1:
 
 EndP            E_ReleaseEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            EMSWarning
 
@@ -346,7 +346,7 @@ Proc            EMSWarning
 EndP            EMSWarning
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_MapAvailableEMSMemory Far
                                         ; AX = handle.
@@ -377,7 +377,7 @@ E_MapAvailableEMSMemory2:
 
 EndP            E_MapAvailableEMSMemory
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_MapEMSMemory Far      ; CL = total pages in handle
                                         ; CH = starting (base) page.
@@ -468,7 +468,7 @@ E_MapEMSMemoryExit:
 
 EndP            E_MapEMSMemory
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_UnInitEMS Far
 
@@ -483,7 +483,7 @@ E_UnInitEMS1:
 
 EndP            E_UnInitEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_GetEMSPageFrame Far
 
@@ -492,7 +492,7 @@ Proc            E_GetEMSPageFrame Far
 
 EndP            E_GetEMSPageFrame
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_MapAlignedBlockEMS Far        ; Given AX, Return DS:SI
 
@@ -516,7 +516,7 @@ Proc            E_MapAlignedBlockEMS Far        ; Given AX, Return DS:SI
 
 EndP            E_MapAlignedBlockEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_AllocateBlockEMS Far          ; EAX = number of bytes
                                                 ; Destroys EMS page frame
@@ -637,7 +637,7 @@ AllocateBlockQuit:
 
 EndP            E_AllocateBlockEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_ReleaseBlockEMS Far           ; Given AX = 'segment'.
 
@@ -723,7 +723,7 @@ E_ReleaseBlockCleanup:
 
 EndP            E_ReleaseBlockEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_AllocateEMS Far               ; EAX = number of bytes
                                                 ; Returns AX with handle
@@ -773,7 +773,7 @@ E_AllocateEMS1:
 
 EndP            E_AllocateEMS
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_EMSAvailable Far            ; Returns Zero flag set if no EMS
 
@@ -782,7 +782,7 @@ Proc            E_EMSAvailable Far            ; Returns Zero flag set if no EMS
 
 EndP            E_EMSAvailable
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Comment ~
 
@@ -807,7 +807,7 @@ E_SavePageFrame1:
 
 EndP            E_SavePageFrame
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_RestorePageFrame Far          ; Given DX = Handle
 Public          E_RestorePageFrame
@@ -832,7 +832,7 @@ EndP            E_RestorePageFrame
 
 ~
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_SaveEMSPageFrame Far
 
@@ -867,7 +867,7 @@ E_SaveEMSPageFrame1:
 
 EndP            E_SaveEMSPageFrame
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_RestoreEMSPageFrame Far
 
@@ -889,7 +889,7 @@ E_RestoreEMSPageFrame1:
 
 EndP            E_RestoreEMSPageFrame
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_GetEMSVersion Far
 
@@ -898,7 +898,7 @@ Proc            E_GetEMSVersion Far
 
 EndP            E_GetEMSVersion
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            E_GetInternalEMSHandle Far
 
@@ -907,7 +907,7 @@ Proc            E_GetInternalEMSHandle Far
 
 EndP            E_GetInternalEMSHandle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 IF EMSDEBUG
 
@@ -964,10 +964,10 @@ EndP            E_DumpEMSMemory
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

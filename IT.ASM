@@ -1,15 +1,15 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Startup Module                                                              �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Startup Module                                                              │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386P
 
 include switch.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         Object1 BYTE Public 'Data'
                 Extrn   HelpKeyValue:Word, OrderKeyValue:Word
@@ -103,7 +103,7 @@ ENDIF
 
                 Extrn   InitTimerHandler:Far, UnInitTimerHandler:Far
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
                 Global  Quit:Far, Refresh:Far
                 Global  DOSShell:Far, GetEnvironment:Far
@@ -112,7 +112,7 @@ ENDIF
                 Public  IsStartupKeyList
                 Public  GetStartupKeyList
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 StartUp BYTE Public 'Code' USE16
                         Assume  CS:StartUp, DS:Nothing, ES:Nothing
@@ -120,9 +120,9 @@ Segment                 StartUp BYTE Public 'Code' USE16
 CREATENEWLOGFILE        EQU     1
 include debug.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 StackSize       =       1000h
 
@@ -228,9 +228,9 @@ StartupQueueOffset      DW      Offset StartupInformation
 StartupQueueEnd         DW      Offset ENDSTARTUPINFORMATION
 StartupQueueNextFunction DW     Offset GetStartupKeyList2
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            CapitaliseAL
 
@@ -247,7 +247,7 @@ CapitaliseAL1:
 
 EndP            CapitaliseAL
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetDecimalNumber        ; Returns CX
 
@@ -288,7 +288,7 @@ GetDecimalNumber4:
 
 EndP            GetDecimalNumber
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Start
                         Assume DS:Nothing
@@ -893,7 +893,7 @@ EndP            Quit
 
 EndP            Start
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            IsStartupKeyList Far
 
@@ -903,7 +903,7 @@ Proc            IsStartupKeyList Far
 
 EndP            IsStartupKeyList
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetStartupKeyList Far
 
@@ -971,7 +971,7 @@ GetStartupKeyList3:                     ; Save module then quit
 
 EndP            GetStartupKeyList
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            CrashRecovery Far               ; CtrlAltDel location.
 
@@ -993,7 +993,7 @@ Proc            CrashRecovery Far               ; CtrlAltDel location.
 
 EndP            CrashRecovery
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetEnvironment Far              ; DS:SI points to string.
                                                 ; CX = length of string.
@@ -1036,7 +1036,7 @@ GetEnvironment3:
 
 EndP            GetEnvironment
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Refresh Far
 
@@ -1051,7 +1051,7 @@ Proc            Refresh Far
 
 EndP            Refresh
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DOSShell Far
 
@@ -1129,19 +1129,19 @@ DOSShell5:
 EndP            DOSShell
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 
 EndS
 
-;�����������������������������������������������������������������������������Ŀ
-;� Stack Segment                                                               �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Stack Segment                                                               │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         StackSeg PARA Stack 'Stack'
 StackData       DB      StackSize Dup(?)
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End             Start

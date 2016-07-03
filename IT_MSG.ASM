@@ -1,13 +1,13 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Message Module                                                              �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Message Module                                                              │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         .386
                         Jumps
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Extrn   M_FunctionDivider:Far
                 Extrn   M_Object1List:Far
@@ -15,9 +15,9 @@
                 Extrn   O1_LongMessageList:Far
                 Extrn   O1_ConfirmClearMessage:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  Msg_ResetMessage:Far
                 Global  Msg_DrawMessage:Far
@@ -26,14 +26,14 @@
                 Global  Msg_GetMessageLength:Far
                 Global  Msg_GetMessageOffset:Far
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 Message BYTE Public 'Code' USE16
                         Assume CS:Message, DS:Nothing
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 MESSAGELENGTH           Equ     8000
 
@@ -149,10 +149,10 @@ EditMsgKeys             Label
 
                         DB      0FFh
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ResetMessage Far
 
@@ -170,7 +170,7 @@ Proc            Msg_ResetMessage Far
 
 EndP            Msg_ResetMessage
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_DrawMessage Far
 
@@ -305,7 +305,7 @@ Msg_DrawMessageEnd:
 EndP            Msg_DrawMessage
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_PreMessage Far
 
@@ -334,7 +334,7 @@ Msg_PreMessage1:
 EndP            Msg_PreMessage
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_PostMessage Far
 
@@ -396,7 +396,7 @@ Msg_PostMessage5:
 EndP            Msg_PostMessage
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_Tab Far
 
@@ -414,7 +414,7 @@ Msg_Tab1:
 
 EndP            Msg_Tab
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ViewMsgUp Far
                 Assume DS:Message
@@ -430,7 +430,7 @@ Proc            Msg_ViewMsgUp Far
 EndP            Msg_ViewMsgUp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ViewMsgDown Far
                 Assume DS:Message
@@ -451,7 +451,7 @@ Msg_ViewMsgDown1:
 EndP            Msg_ViewMsgDown
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ViewMsgPgUp Far
                 Assume DS:Message
@@ -471,7 +471,7 @@ Msg_ViewMsgPgUp1:
 EndP            Msg_ViewMsgPgUp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ViewMsgPgDn Far
                 Assume DS:Message
@@ -492,7 +492,7 @@ Msg_ViewMsgPgDn1:
 EndP            Msg_ViewMsgPgDn
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ViewMsgEdit Far
                 Assume DS:Message
@@ -508,7 +508,7 @@ Proc            Msg_ViewMsgEdit Far
 EndP            Msg_ViewMsgEdit
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgView Far
                 Assume DS:Message
@@ -521,7 +521,7 @@ Proc            Msg_EditMsgView Far
 EndP            Msg_EditMsgView
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgLeft Far
                 Assume DS:Message
@@ -535,7 +535,7 @@ Proc            Msg_EditMsgLeft Far
 EndP            Msg_EditMsgLeft
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgRight Far
                 Assume DS:Message
@@ -556,7 +556,7 @@ Msg_EditMsgRight1:
 EndP            Msg_EditMsgRight
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgUp Far
                 Assume DS:Message
@@ -593,7 +593,7 @@ Msg_EditMsgUpEnd:
 EndP            Msg_EditMsgUp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgPgUp Far
 
@@ -610,7 +610,7 @@ Msg_EditMsgPgUp1:
 
 EndP            Msg_EditMsgPgUp
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgDown Far
                 Assume DS:Message
@@ -653,7 +653,7 @@ Msg_EditMsgDownEnd:
 EndP            Msg_EditMsgDown
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgPgDn Far
 
@@ -670,7 +670,7 @@ Msg_EditMsgPgDn1:
 
 EndP            Msg_EditMsgPgDn
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgDelete Far
                 Assume DS:Message
@@ -686,7 +686,7 @@ Proc            Msg_EditMsgDelete Far
 EndP            Msg_EditMsgDelete
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgInsert Far
 
@@ -704,7 +704,7 @@ Msg_EditMsgInsert1:
 
 EndP            Msg_EditMsgInsert
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgBackspace Far
                 Assume DS:Message
@@ -723,7 +723,7 @@ Msg_EditMsgBackspace1:
 EndP            Msg_EditMsgBackspace
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgDeleteLine Far
                 Assume DS:Message
@@ -756,7 +756,7 @@ Msg_EditMsgDeleteLine4:
 EndP            Msg_EditMsgDeleteLine
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ClearMessage Far
 
@@ -775,7 +775,7 @@ Msg_ClearMessage1:
 
 EndP            Msg_ClearMessage
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgHome Far
                 Assume DS:Message
@@ -790,7 +790,7 @@ Proc            Msg_EditMsgHome Far
 EndP            Msg_EditMsgHome
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_EditMsgEnd Far
                 Assume DS:Message
@@ -818,7 +818,7 @@ Msg_EditMsgEnd1:
 EndP            Msg_EditMsgEnd
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            FindStart
 
@@ -835,7 +835,7 @@ FindStart2:
 
 EndP            FindStart
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            InsertData                      ; SI = pos, DX = length.
 
@@ -883,7 +883,7 @@ InsertDataEnd:
 
 EndP            InsertData
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DeleteData                      ; SI = pos, DX = length
                                                 ; Assume DS:Message
@@ -918,7 +918,7 @@ DeleteData1:
 
 EndP            DeleteData
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            CheckWordWrap                   ; Check current line only.
 
@@ -971,7 +971,7 @@ CheckWordWrap8:
 
 EndP            CheckWordWrap
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_GetMessageLength Far                ; Returns AX
 
@@ -997,7 +997,7 @@ Msg_GetMessageLength1:
 
 EndP            Msg_GetMessageLength
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_GetMessageOffset Far
 
@@ -1009,7 +1009,7 @@ Proc            Msg_GetMessageOffset Far
 
 EndP            Msg_GetMessageOffset
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Msg_ToggleCharacterSet Far
                 Assume DS:Message
@@ -1022,10 +1022,10 @@ Proc            Msg_ToggleCharacterSet Far
 EndP            Msg_ToggleCharacterSet
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

@@ -1,6 +1,6 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Screen Module                                                               �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Screen Module                                                               │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 include switch.inc
 
@@ -17,9 +17,9 @@ EndS
                 Extrn   MouseSecondSetEnable:Far, MouseSecondSetDisable:Far
                 Extrn   MouseUpdateEnable:Far, MouseUpdateDisable:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  S_InitScreen:Far
                 Global  S_SetPalette:Far
@@ -53,7 +53,7 @@ EndS
                 Public  S_RedefineCharacters
                 Public  VGAFlags
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 Screen BYTE Public 'Code' USE16
                         Assume  CS:Screen, DS:Screen
@@ -61,9 +61,9 @@ Segment                 Screen BYTE Public 'Code' USE16
 CREATENEWLOGFILE        EQU     0
 include debug.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 STORESCREENADDRESS      EQU     0BA00h
 
@@ -301,11 +301,11 @@ VGAFlags                DB      0       ; Bit 0 = override VGA detection
                                         ; Bit 1 = PreserveRetrace
                                         ; Bit 2 = Wait for VRetrace
 DirectVideo             DB      0
-TestBytes               DB      '�CHARACTER�TEST�'
+TestBytes               DB      '«CHARACTER·TEST»'
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 ; InitScreen - Sets up buffer area for screen functions & character generation
 ;            - Sets up 50 line mode
@@ -435,7 +435,7 @@ S_InitScreen6:
 EndP            S_InitScreen
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_SaveScreen Far
 
@@ -471,7 +471,7 @@ ENDIF
 
 EndP            S_SaveScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_RestoreScreen Far
 
@@ -509,7 +509,7 @@ ENDIF
 
 EndP            S_RestoreScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_Set80x50Mode Far
 
@@ -564,7 +564,7 @@ S_Set80x50Mode1:
 
 EndP            S_Set80x50Mode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_SetPalette2 Far
 
@@ -575,7 +575,7 @@ Proc            S_SetPalette2 Far
 
 EndP            S_SetPalette2
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_SetPalette Far
 
@@ -623,7 +623,7 @@ SP2:
 
 EndP            S_SetPalette
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 SequencerSemaphore      DB      0FFh
 
@@ -658,7 +658,7 @@ S_SetSequencer1:
 
 EndP            S_SetSequencer
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_ResetSequencer Far
 
@@ -690,7 +690,7 @@ S_ResetSequencer1:
 
 EndP            S_ResetSequencer
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_RedefineCharacters Far
                                         ; DS:SI = Offset to characterdefs
@@ -742,7 +742,7 @@ RedefineCharacters1:
 
 EndP            S_RedefineCharacters
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_DefineSmallNumbers Far
 
@@ -843,7 +843,7 @@ S_DefineSmallNumbers5:
 
 EndP            S_DefineSmallNumbers
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_UnInitScreen Far
 
@@ -862,7 +862,7 @@ Proc            S_UnInitScreen Far
 
 EndP            S_UnInitScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_GetDestination Far
 
@@ -881,7 +881,7 @@ S_GetDestination1:
 
 EndP            S_GetDestination
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_ClearScreen Far
 
@@ -909,7 +909,7 @@ ENDIF
 
 EndP            S_ClearScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 ; Style - Low byte: Box style number
 ;       - High byte: Flags - Bit 0: Filled box/empty box; on = don't fill
@@ -1009,7 +1009,7 @@ DrawBox3:
 
 EndP            S_DrawBox
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_UpdateScreen Far
 
@@ -1069,7 +1069,7 @@ S_UpdateScreen1:
 
 EndP            S_UpdateScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_SetDirectMode Far
 
@@ -1116,7 +1116,7 @@ S_SetDirectMode2:
 
 EndP            S_SetDirectMode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_HiLight Far                   ; DI points to offset
                                                 ; AL = colour
@@ -1140,7 +1140,7 @@ HiLight1:
 
 EndP            S_HiLight
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_DirectDrawString Far
 
@@ -1163,7 +1163,7 @@ Proc            S_DirectDrawString Far
 
 EndP            S_DirectDrawString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_DrawString Far                ; DS:SI points to string
                                                 ; DI points to offset
@@ -1414,7 +1414,7 @@ DrawString018:
 
 EndP            S_DrawString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_GetGenerationTableOffset Far          ; returns ES:DI
 
@@ -1425,7 +1425,7 @@ Proc            S_GetGenerationTableOffset Far          ; returns ES:DI
 
 EndP            S_GetGenerationTableOffset
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_GenerateCharacters Far                ; AX = starting char.
                                                         ; BX = chars per row.
@@ -1525,7 +1525,7 @@ S_GenerateCharacters2:
 
 EndP            S_GenerateCharacters
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_DrawSmallBox Far
 
@@ -1546,7 +1546,7 @@ Proc            S_DrawSmallBox Far
 
 EndP            S_DrawSmallBox
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_GetPaletteOffset Far
 
@@ -1558,7 +1558,7 @@ Proc            S_GetPaletteOffset Far
 
 EndP            S_GetPaletteOffset
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_UsePresetPalette Far
 
@@ -1584,7 +1584,7 @@ Proc            S_UsePresetPalette Far
 EndP            S_UsePresetPalette
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_DefineHiASCII Far
 
@@ -1628,7 +1628,7 @@ S_DefineHIASCII1:
 
 EndP            S_DefineHiASCII
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            S_InvertCursor Far              ; AL = char, AH = mask.
 
@@ -1670,16 +1670,16 @@ S_InvertCursor1:
 
 EndP            S_InvertCursor
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment         ScreenData PARA Public 'Data'
                 DB      1542 * 16 Dup (0)
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

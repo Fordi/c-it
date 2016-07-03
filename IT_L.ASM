@@ -1,15 +1,15 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Info Line Module - Playing info updates / other messages                    �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Info Line Module - Playing info updates / other messages                    │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386
 
 include switch.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         Glbl BYTE Public 'Code'
                 Extrn   CurrentMode:Byte
@@ -36,9 +36,9 @@ ENDIF
                 Extrn   PE_GetMaxOrder:Far
                 Extrn   Glbl_TutorialHandler:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  UpdateInfoLine:Far
                 Global  IdleUpdateInfoLine:Far
@@ -51,7 +51,7 @@ ENDIF
                 Public  UnInitTimerHandler
                 Public  GetTimerCounter
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 InfoLine DWORD Public 'Code' USE16
                         Assume CS:InfoLine, DS:InfoLine
@@ -59,9 +59,9 @@ Segment                 InfoLine DWORD Public 'Code' USE16
 CREATENEWLOGFILE        EQU     0
 include debug.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 SLAVECHANNELSIZE        =       128
 
@@ -89,9 +89,9 @@ DisplayChannelMsg       DB      0
 ShowUsageTime           DB      1
 
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            TimerInterruptHandler
 
@@ -103,7 +103,7 @@ Proc            TimerInterruptHandler
 
 EndP            TimerInterruptHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            InitTimerHandler Far
 
@@ -128,7 +128,7 @@ Proc            InitTimerHandler Far
 
 EndP            InitTimerHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            UninitTimerHandler Far
 
@@ -147,7 +147,7 @@ Proc            UninitTimerHandler Far
 
 EndP            UninitTimerHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            FillToEOL
 
@@ -168,7 +168,7 @@ UpdateInfoLineEOL2:
 
 EndP            FillToEOL
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            UpdateInfoLine Far
 
@@ -325,7 +325,7 @@ UpdateInfoLine7:
 EndP            UpdateInfoLine
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            IdleUpdateInfoLine Far
 
@@ -359,7 +359,7 @@ ENDIF
 
 EndP            IdleUpdateInfoLine
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ClearInfoLine Far
 
@@ -369,7 +369,7 @@ Proc            ClearInfoLine Far
 
 EndP            ClearInfoLine
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInfoLine Far                         ; DS:SI points to msg.
 
@@ -384,7 +384,7 @@ SetInfoLineChain:
 
 EndP            SetInfoLine
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInfoLine2 Far                         ; DS:SI points to msg.
 
@@ -393,7 +393,7 @@ Proc            SetInfoLine2 Far                         ; DS:SI points to msg.
 
 EndP            SetInfoLine2
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            UpdatePointers                  ; BX = row, CX = pattern
 
@@ -462,7 +462,7 @@ UpdatePointersEnd:
 EndP            UpdatePointers
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ShowTime
 
@@ -528,7 +528,7 @@ ShowTime2:
 EndP            ShowTime
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            StartClock Far
 
@@ -541,7 +541,7 @@ Proc            StartClock Far
 
 EndP            StartClock
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetTimerCounter Far
 
@@ -550,10 +550,10 @@ Proc            GetTimerCounter Far
 
 EndP            GetTimerCounter
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

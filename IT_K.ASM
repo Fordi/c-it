@@ -1,15 +1,15 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Keyboard Module                                                             �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Keyboard Module                                                             │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386
 
 include switch.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Extrn   D_GotoStartingDirectory:Far
 
@@ -25,9 +25,9 @@ include switch.inc
                 Extrn   IsStartupKeyList:Far
                 Extrn   GetStartupKeyList:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  K_DrawTables:Far
                 Global  K_InitKeyBoard:Far
@@ -51,7 +51,7 @@ include switch.inc
 
                 Public  MIDIBufferEmpty, MIDISend, K_ShowMIDIInput
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 KeyBoard BYTE Public 'Code' USE16
                         Assume CS:KeyBoard, DS:KeyBoard
@@ -59,9 +59,9 @@ Segment                 KeyBoard BYTE Public 'Code' USE16
 CREATENEWLOGFILE        EQU     0
 include debug.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 KeyBoardTable           DB      256 Dup (?)     ; Table of current keypresses
 KeyBoardBuffer          DB      256 Dup (?)     ; Queue of keys.
@@ -646,9 +646,9 @@ USKeyboardTable    Label Byte
 
         DB      0FFh
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Alt             DB      0
 Ctrl            DB      0
@@ -746,7 +746,7 @@ K_KBHandler2:
 
 EndP            K_KBHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_DOSKBHandler Far
 
@@ -815,7 +815,7 @@ K_DOSKBHandler6:
 
 EndP            K_DOSKBHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_SetKeyBoardLights             ; Reqs: DS:KeyBoard
                                                 ; Sets keyboard lights (duh!)
@@ -850,7 +850,7 @@ K_SetKeyBoardLights3:
 
 EndP            K_SetKeyBoardLights
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_InitKeyBoard Far            ; Raises key repeat rate
                                               ; to 30 char/s,
@@ -935,7 +935,7 @@ K_InitKeyBoard3:                                ; Chained to from K_UnInstallDOS
 
 EndP            K_InitKeyBoard
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_UnInitKeyBoard Far
 
@@ -989,7 +989,7 @@ K_UnInitKeyBoard1:
 
 EndP            K_UnInitKeyBoard
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_InstallDOSHandler Far
 
@@ -1019,7 +1019,7 @@ Proc            K_InstallDOSHandler Far
 
 EndP            K_InstallDOSHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_UnInstallDOSHandler Far
 
@@ -1047,7 +1047,7 @@ Proc            K_UnInstallDOSHandler Far
 
 EndP            K_UnInstallDOSHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_GetNextKeyByte
 
@@ -1059,7 +1059,7 @@ Proc            K_GetNextKeyByte
 
 EndP            K_GetNextKeyByte
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_IsKeyWaiting Far      ; Returns 1 in AX if key is ready
                                         ;         0 in AX if no key is ready
@@ -1103,7 +1103,7 @@ K_IsKeyWaiting1:
 
 EndP            K_IsKeyWaiting
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_GetKey Far                    ; CX/DX = input/translated
 
@@ -1440,7 +1440,7 @@ K_GetKey20:
 
 EndP            K_GetKey
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_ClearKeyBoardQueue Far
 
@@ -1459,7 +1459,7 @@ K_ClearKeyBoardQueue2:
 
 EndP            K_ClearKeyBoardQueue
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_IsAnyKeyDown Far              ; Returns AL = 1 if key is down.
 
@@ -1492,7 +1492,7 @@ K_IsAnyKeyDown2:
 
 EndP            K_IsAnyKeyDown
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_IsKeyDown Far         ; BX = key to test
 
@@ -1501,7 +1501,7 @@ Proc            K_IsKeyDown Far         ; BX = key to test
 
 EndP            K_IsKeyDown
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_ResetKeyboardTables Far
 
@@ -1517,7 +1517,7 @@ Proc            K_ResetKeyboardTables Far
 
 EndP            K_ResetKeyboardTables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_DrawTables Far
 
@@ -1619,7 +1619,7 @@ K_DrawTable7:
 EndP            K_DrawTables
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_ShowMIDIInput Far
 
@@ -1649,7 +1649,7 @@ Proc            K_ShowMIDIInput Far
 EndP            K_ShowMIDIInput
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_InstallKeyboardType Far
 
@@ -1717,7 +1717,7 @@ K_InstallKeyboardType2:
 
 EndP            K_InstallKeyboardType
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_RemoveKeyboardType Far
 
@@ -1739,7 +1739,7 @@ K_RemoveKeyboardType1:
 
 EndP            K_RemoveKeyboardType
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            K_SetScrollLock Far
 
@@ -1751,7 +1751,7 @@ Proc            K_SetScrollLock Far
 
 EndP            K_SetScrollLock
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MIDIBufferEmpty Far     ; Returns carry set if input OK.
                                         ; Returns carry CLEAR if input full.
@@ -1761,7 +1761,7 @@ Proc            MIDIBufferEmpty Far     ; Returns carry set if input OK.
 
 EndP            MIDIBufferEmpty
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MIDISend Far            ; Given AL = data byte.
 
@@ -1803,10 +1803,10 @@ MIDISendEnd:
 EndP            MIDISend
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

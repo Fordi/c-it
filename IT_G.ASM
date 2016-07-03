@@ -1,15 +1,15 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Global Key Handler                                                          �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Global Key Handler                                                          │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
 
 include switch.inc
 include network.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         Pattern BYTE Public 'Code'
                 Extrn   LastInstrument:Byte
@@ -92,9 +92,9 @@ IF MEMORYDEBUG
                 Extrn   O1_DebugList:Far
 ENDIF
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  Glbl_Ctrl_F1:Far
                 Global  Glbl_Ctrl_F3:Far
@@ -150,14 +150,14 @@ ENDIF
                 Global  Glbl_DriverScreen:Far
 
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 Glbl BYTE Public 'Code'
                         Assume CS:Glbl, DS:Nothing
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 SLAVECHANNELSIZE        EQU     128
 
@@ -199,9 +199,9 @@ InstrumentScreenTable   Label
         DW      Offset O1_InstrumentListPanning
         DW      Offset O1_InstrumentListPitch
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            Glbl_F2 Far
 
@@ -267,7 +267,7 @@ ENDIF
 EndP            Glbl_F2
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F3 Far
 
@@ -283,7 +283,7 @@ Proc            Glbl_F3 Far
 
 EndP            Glbl_F3
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F4 Far
 
@@ -326,7 +326,7 @@ EndP            Glbl_F4_2
 EndP            Glbl_F4
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F5 Far
 
@@ -372,7 +372,7 @@ Glbl_F5_2:
 
 EndP            Glbl_F5
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F6 Far
 
@@ -387,7 +387,7 @@ Proc            Glbl_F6 Far
 
 EndP            Glbl_F6
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_LoadSample Far
 
@@ -403,7 +403,7 @@ Proc            Glbl_LoadSample Far
 
 EndP            Glbl_LoadSample
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_LoadInstrument Far
 
@@ -419,7 +419,7 @@ Proc            Glbl_LoadInstrument Far
 
 EndP            Glbl_LoadInstrument
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Shift_F1 Far
 
@@ -433,7 +433,7 @@ Proc            Glbl_Shift_F1 Far
 
 EndP            Glbl_Shift_F1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Shift_F9 Far
 
@@ -449,7 +449,7 @@ Proc            Glbl_Shift_F9 Far
 
 EndP            Glbl_Shift_F9
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Shift_F6 Far
 
@@ -468,7 +468,7 @@ Proc            Glbl_Shift_F6 Far
 EndP            Glbl_Shift_F6
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F8 Far
 
@@ -479,7 +479,7 @@ Proc            Glbl_F8 Far
 
 EndP            Glbl_F8
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F9 Far
 
@@ -500,7 +500,7 @@ Proc            Glbl_F9 Far
 
 EndP            Glbl_F9
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F10 Far
 
@@ -523,7 +523,7 @@ Proc            Glbl_F10 Far
 
 EndP            Glbl_F10
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F11 Far
 
@@ -551,7 +551,7 @@ Glbl_F11_1:
 
 EndP            Glbl_F11
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_F12 Far
 
@@ -565,7 +565,7 @@ Proc            Glbl_F12 Far
 
 EndP            Glbl_F12
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Ctrl_F1 Far
 
@@ -579,7 +579,7 @@ Proc            Glbl_Ctrl_F1 Far
 
 EndP            Glbl_Ctrl_F1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Ctrl_F3 Far
 
@@ -595,7 +595,7 @@ Proc            Glbl_Ctrl_F3 Far
 
 EndP            Glbl_Ctrl_F3
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Ctrl_F4 Far
 
@@ -611,7 +611,7 @@ Proc            Glbl_Ctrl_F4 Far
 
 EndP            Glbl_Ctrl_F4
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Ctrl_F5 Far
 
@@ -625,7 +625,7 @@ Proc            Glbl_Ctrl_F5 Far
 
 EndP            Glbl_Ctrl_F5
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Ctrl_F12 Far
 
@@ -640,7 +640,7 @@ Proc            Glbl_Ctrl_F12 Far
 
 EndP            Glbl_Ctrl_F12
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_GetHeaderMode Far
 
@@ -684,7 +684,7 @@ Glbl_GetHeaderMode2:
 EndP            Glbl_GetHeaderMode
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_SetCurrentMode Far
 
@@ -694,7 +694,7 @@ Proc            Glbl_SetCurrentMode Far
 
 EndP            Glbl_SetCurrentMode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_GetCurrentMode Far         ; Returns AL
 
@@ -704,7 +704,7 @@ Proc            Glbl_GetCurrentMode Far         ; Returns AL
 
 EndP            Glbl_GetCurrentMode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F1 Far
 
@@ -716,7 +716,7 @@ Proc            Glbl_Alt_F1 Far
 
 EndP            Glbl_Alt_F1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F2 Far
 
@@ -728,7 +728,7 @@ Proc            Glbl_Alt_F2 Far
 
 EndP            Glbl_Alt_F2
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F3 Far
 
@@ -740,7 +740,7 @@ Proc            Glbl_Alt_F3 Far
 
 EndP            Glbl_Alt_F3
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F4 Far
 
@@ -752,7 +752,7 @@ Proc            Glbl_Alt_F4 Far
 
 EndP            Glbl_Alt_F4
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F5 Far
 
@@ -764,7 +764,7 @@ Proc            Glbl_Alt_F5 Far
 
 EndP            Glbl_Alt_F5
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F6 Far
 
@@ -776,7 +776,7 @@ Proc            Glbl_Alt_F6 Far
 
 EndP            Glbl_Alt_F6
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F7 Far
 
@@ -788,7 +788,7 @@ Proc            Glbl_Alt_F7 Far
 
 EndP            Glbl_Alt_F7
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_Alt_F8 Far
 
@@ -800,7 +800,7 @@ Proc            Glbl_Alt_F8 Far
 
 EndP            Glbl_Alt_F8
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_LeftBrace Far
 
@@ -816,7 +816,7 @@ Proc            Glbl_LeftBrace Far
 
 EndP            Glbl_LeftBrace
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_RightBrace Far
 
@@ -832,7 +832,7 @@ Proc            Glbl_RightBrace Far
 
 EndP            Glbl_RightBrace
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_LeftSquareBracket Far
 
@@ -849,7 +849,7 @@ Proc            Glbl_LeftSquareBracket Far
 
 EndP            Glbl_LeftSquareBracket
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_RightSquareBracket Far
 
@@ -866,7 +866,7 @@ Proc            Glbl_RightSquareBracket Far
 
 EndP            Glbl_RightSquareBracket
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_SaveMode Far
 
@@ -891,7 +891,7 @@ Proc            Glbl_SaveMode Far
 
 EndP            Glbl_SaveMode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_RestoreMode Far
 
@@ -911,7 +911,7 @@ Proc            Glbl_RestoreMode Far
 
 EndP            Glbl_RestoreMode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 IF MEMORYDEBUG
 
@@ -929,7 +929,7 @@ EndP            Glbl_Debug
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_SampleToInstrument
 
@@ -985,7 +985,7 @@ Glbl_SampleToInstrument1:
 EndP            Glbl_SampleToInstrument
                 Assume ES:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 IF TIMERSCREEN
 
@@ -1003,7 +1003,7 @@ EndP            Glbl_TimerScreen
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Glbl_DriverScreen Far
 
@@ -1017,10 +1017,10 @@ Glbl_DriverScreen1:
 
 EndP            Glbl_DriverScreen
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

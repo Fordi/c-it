@@ -1,6 +1,6 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386
@@ -8,9 +8,9 @@
 include switch.inc
 include network.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 IF MEMORYDEBUG
 
@@ -170,9 +170,9 @@ EndS
                 Extrn   MouseRemoveEvents:Far, MouseRestoreEvents:Far
                 Extrn   MultiChannelInfo:Byte
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  F_MainMenu:Far
                 Global  F_FileMenu:Far
@@ -294,14 +294,14 @@ ENDIF
                 Public  F_MIDI_Down
                 Public  F_MIDI_PgUp, F_MIDI_PgDn
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 Functions BYTE Public 'Code' USE16
                         Assume CS:Functions, DS:Nothing
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 ButtonVariables         Label   Word
                         DW      220h                    ; Standard SB Configs
@@ -334,7 +334,7 @@ ButtonWidth     Label   Word
 
 MouseEventData          DW      7 Dup (0), Functions
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 GetThumbValues          Label   Word
                         DW      Offset GetPanning
@@ -399,7 +399,7 @@ PostThumbCheck          Label   Word
 ThumbStringEnter        DB      0
                         DB      4 Dup (0)
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 ; LastStringData          DD      0
 
@@ -423,7 +423,7 @@ PostStringInput         Label   Word
                         DW      Offset SetInstrumentString
                         DW      Offset F_NothingNear
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 GetToggleStatus         Label   Word
                         DW      Offset GetSampleToggle
@@ -439,7 +439,7 @@ ToggleBit               Label   Word
                         DW      Offset LoadSampleToggle
                         DW      Offset InstrumentToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 TripleNumberPos         DW      0
 
@@ -449,7 +449,7 @@ Get3NumValues           Label   Word
 Set3NumValues           Label   Word
                         DW      Offset SetInstrument3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 NumberPos               DW      0
 
@@ -463,7 +463,7 @@ Set5NumValues           Label   Word
                         DW      Offset SetLoadSample5Num
                         DW      Offset SetInst5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 HeaderMsg1              Label   Byte
 IF SHOWVERSION
@@ -500,9 +500,9 @@ NumberStorage           DW      0, 0, 0, 0, 0, 0, 0, 0, 0
 PitchMessage            DB      "Pitch", 0
 FilterMessage           DB      "Filter", 0
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            F_Nothing Far
 
@@ -511,7 +511,7 @@ Proc            F_Nothing Far
 
 EndP            F_Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_InstrumentButtonHandler Far
 
@@ -533,7 +533,7 @@ F_InstrumentButtonHandler1:
 
 EndP            F_InstrumentButtonHandler
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_NothingNear
 
@@ -542,7 +542,7 @@ Proc            F_NothingNear
 
 EndP            F_NothingNear
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_CallFarPreFunction Far
 
@@ -552,7 +552,7 @@ Proc            F_CallFarPreFunction Far
 
 EndP            F_CallFarPreFunction
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_CallFarPostFunction Far
 
@@ -564,7 +564,7 @@ Proc            F_CallFarPostFunction Far
 
 EndP            F_CallFarPostFunction
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_CallFarFunction Far
 
@@ -574,7 +574,7 @@ Proc            F_CallFarFunction Far
 
 EndP            F_CallFarFunction
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawBoxObject Far
 
@@ -597,7 +597,7 @@ Proc            F_DrawBoxObject Far
 
 EndP            F_DrawBoxObject
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawTextObject Far
 
@@ -647,7 +647,7 @@ F_DrawTextObject3:
 
 EndP            F_DrawTextObject
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostExitObject Far
 
@@ -664,7 +664,7 @@ F_PostExitObject1:
 
 EndP            F_PostExitObject
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetDirectMode Far
 
@@ -676,7 +676,7 @@ Proc            F_SetDirectMode Far
 
 EndP            F_SetDirectMode
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_CharacterDefinitions Far
 
@@ -690,7 +690,7 @@ Proc            F_CharacterDefinitions Far
 
 EndP            F_CharacterDefinitions
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseButtonPress Far            ; Given CX, DX = coords
                                                 ; Given AX = Object number
@@ -710,7 +710,7 @@ Proc            MouseButtonPress Far            ; Given CX, DX = coords
 
 EndP            MouseButtonPress
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseButtonRelease Far
 
@@ -728,7 +728,7 @@ Proc            MouseButtonRelease Far
 
 EndP            MouseButtonRelease
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawButtonObject Far  ; AX = object number
                                         ; SI = object
@@ -813,7 +813,7 @@ F_DrawButtonObject1:
 
 EndP            F_DrawButtonObject
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PreButtonObject Far
 
@@ -852,7 +852,7 @@ Proc            F_PreButtonObject Far
 
 EndP            F_PreButtonObject
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostButtonObject Far
 
@@ -966,7 +966,7 @@ F_PostButtonObject6:                            ; Enter pressed
 
 EndP            F_PostButtonObject
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonType0 Far
 
@@ -995,7 +995,7 @@ ButtonType0_4:
 
 EndP            ButtonType0
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonType1 Far
 
@@ -1020,7 +1020,7 @@ ButtonType1_2:
 
 EndP            ButtonType1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect Far
 
@@ -1030,7 +1030,7 @@ Proc            ButtonEffect Far
 
 EndP            ButtonEffect
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonType2 Far
 
@@ -1076,7 +1076,7 @@ ButtonType2_2:
 
 EndP            ButtonType2
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect0 Far
 
@@ -1086,7 +1086,7 @@ Proc            ButtonEffect0 Far
 
 EndP            ButtonEffect0
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect1 Far
 
@@ -1098,7 +1098,7 @@ Proc            ButtonEffect1 Far
 
 EndP            ButtonEffect1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect2 Far
 
@@ -1117,7 +1117,7 @@ Proc            ButtonEffect2 Far
 
 EndP            ButtonEffect2
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect3 Far
 
@@ -1131,7 +1131,7 @@ Proc            ButtonEffect3 Far
 
 EndP            ButtonEffect3
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect4 Far
 
@@ -1139,7 +1139,7 @@ Proc            ButtonEffect4 Far
 
 EndP            ButtonEffect4
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect5 Far
 
@@ -1155,7 +1155,7 @@ Proc            ButtonEffect5 Far
 
 EndP            ButtonEffect5
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            ButtonEffect6 Far
 
@@ -1163,7 +1163,7 @@ Proc            ButtonEffect6 Far
 
 EndP            ButtonEffect6
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetPanning              ; DI = channel no.
 
@@ -1181,7 +1181,7 @@ Proc            GetPanning              ; DI = channel no.
 
 EndP            GetPanning
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetPEVariables
 
@@ -1198,7 +1198,7 @@ Proc            GetPEVariables
 
 EndP            GetPEVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetScreenVariables
 
@@ -1214,7 +1214,7 @@ Proc            GetScreenVariables
 
 EndP            GetScreenVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetScreenVariables
 
@@ -1233,7 +1233,7 @@ Proc            SetScreenVariables
 
 EndP            SetScreenVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetPanning
 
@@ -1258,7 +1258,7 @@ ENDIF
 
 EndP            SetPanning
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetPEVariables
 
@@ -1277,7 +1277,7 @@ Proc            SetPEVariables
 
 EndP            SetPEVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetInstVariables
 
@@ -1327,7 +1327,7 @@ GetInstVariables2:
 EndP            GetInstVariables
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSampleVariables
 
@@ -1354,7 +1354,7 @@ GetSampleVariables1:
 EndP            GetSampleVariables
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetMusicVariables
 
@@ -1371,7 +1371,7 @@ Proc            GetMusicVariables
 
 EndP            GetMusicVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetInstrumentVariables
 
@@ -1387,7 +1387,7 @@ Proc            GetInstrumentVariables
 
 EndP            GetInstrumentVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetDriverVariables
 
@@ -1397,7 +1397,7 @@ Proc            GetDriverVariables
 
 EndP            GetDriverVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetDriverVariables
 
@@ -1406,7 +1406,7 @@ Proc            SetDriverVariables
 
 EndP            SetDriverVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetLoadSampleVariables
 
@@ -1428,7 +1428,7 @@ Proc            GetLoadSampleVariables
 
 EndP            GetLoadSampleVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInstVariables
 
@@ -1470,7 +1470,7 @@ SetInstVariables1:
 EndP            SetInstVariables
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetSampleVariables
 
@@ -1499,7 +1499,7 @@ SetSampleVariables1:
 EndP            SetSampleVariables
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetMusicVariables
 
@@ -1539,7 +1539,7 @@ SetMusicVariablesEnd:
 
 EndP            SetMusicVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInstrumentVariables
 
@@ -1558,7 +1558,7 @@ Proc            SetInstrumentVariables
 
 EndP            SetInstrumentVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetLoadSampleVariables
 
@@ -1579,7 +1579,7 @@ Proc            SetLoadSampleVariables
 
 EndP            SetLoadSampleVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MousePressThumbBar Far
 
@@ -1599,7 +1599,7 @@ Proc            MousePressThumbBar Far
 
 EndP            MousePressThumbBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseHeldThumbBar Far
 
@@ -1626,7 +1626,7 @@ MouseHeldThumbBar2:
 
 EndP            MouseHeldThumbBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawThumbBar Far
 
@@ -1733,7 +1733,7 @@ F_DrawThumbBar2:
 EndP            F_DrawThumbBar
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawScalableThumbBar Far
 
@@ -1846,7 +1846,7 @@ F_DrawScalableThumbBar2:
 EndP            F_DrawScalableThumbBar
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            HiLightPanning
 
@@ -1866,7 +1866,7 @@ Proc            HiLightPanning
 
 EndP            HiLightPanning
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PreThumbBar Far
 
@@ -1964,7 +1964,7 @@ F_PreThumbBar3:
 
 EndP            F_PreThumbBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PreScalableThumbBar Far
 
@@ -2068,7 +2068,7 @@ F_PreScalableThumbBar3:
 
 EndP            F_PreScalableThumbBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostScalableThumbBar Far
 
@@ -2120,7 +2120,7 @@ F_PostScalableThumbBarMouse3:
 
 EndP            F_PostScalableThumbBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostThumbBar Far
 
@@ -2438,7 +2438,7 @@ F_PostThumbBar31:
 
 EndP            F_PostThumbBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawInfoLine Far
 
@@ -2495,7 +2495,7 @@ F_DrawInfoLine3:
 
 EndP            F_DrawInfoLine
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ShowChannels Far
 
@@ -2522,7 +2522,7 @@ Proc            F_ShowChannels Far
 
 EndP            F_ShowChannels
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ShowChannel1
 
@@ -2549,7 +2549,7 @@ F_ShowChannel1_2:
 
 EndP            F_ShowChannel1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_RedrawScreen Far
 
@@ -2558,7 +2558,7 @@ Proc            F_RedrawScreen Far
 
 EndP            F_RedrawScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Return0 Far           ; ESC pressed on opening scrn
 
@@ -2568,7 +2568,7 @@ Proc            F_Return0 Far           ; ESC pressed on opening scrn
 
 EndP            F_Return0
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Return64 Far
 
@@ -2578,7 +2578,7 @@ Proc            F_Return64 Far
 
 EndP            F_Return64
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Return192 Far
 
@@ -2588,7 +2588,7 @@ Proc            F_Return192 Far
 
 EndP            F_Return192
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            PanningKeys
 
@@ -2657,7 +2657,7 @@ PanningKeysSpace:
 
 EndP            PanningKeys
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            FilterKeys
 
@@ -2686,7 +2686,7 @@ FilterKeysEnd:
 
 EndP            FilterKeys
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DrawPanning
 
@@ -2720,7 +2720,7 @@ DrawPanning1:
 
 EndP            DrawPanning
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DrawMIDIChannel
 
@@ -2772,7 +2772,7 @@ DrawMIDIChannel2:
 
 EndP            DrawMIDIChannel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Return1 Far
 
@@ -2782,7 +2782,7 @@ Proc            F_Return1 Far
 
 EndP            F_Return1
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSIOInstSegment
 
@@ -2794,7 +2794,7 @@ Proc            GetSIOInstSegment
 
 EndP            GetSIOInstSegment
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSIODiskSegment
 
@@ -2806,7 +2806,7 @@ Proc            GetSIODiskSegment
 
 EndP            GetSIODiskSegment
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetLoadSampleString             ; Returns DS:SI
 
@@ -2818,7 +2818,7 @@ Proc            GetLoadSampleString             ; Returns DS:SI
 
 EndP            GetLoadSampleString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetMusicSegmentString
 
@@ -2831,7 +2831,7 @@ Proc            GetMusicSegmentString
 
 EndP            GetMusicSegmentString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetMusicSegmentString
 
@@ -2844,7 +2844,7 @@ ENDIF
 
 EndP            SetMusicSegmentString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetPatternSegmentString
 
@@ -2857,7 +2857,7 @@ Proc            GetPatternSegmentString
 
 EndP            GetPatternSegmentString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSampleString
 
@@ -2869,7 +2869,7 @@ Proc            GetSampleString
 
 EndP            GetSampleString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetSampleString
 
@@ -2879,7 +2879,7 @@ Proc            SetSampleString
 
 EndP            SetSampleString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetInstrumentString
 
@@ -2891,7 +2891,7 @@ Proc            GetInstrumentString
 
 EndP            GetInstrumentString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInstrumentString
 
@@ -2900,7 +2900,7 @@ Proc            SetInstrumentString
 
 EndP            SetInstrumentString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 TopMIDIMacro    DW      80h
 
@@ -2927,7 +2927,7 @@ GetMIDIString1:
 
 EndP            GetMIDIString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseSelectString Far
 
@@ -2941,7 +2941,7 @@ Proc            MouseSelectString Far
 
 EndP            MouseSelectString
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 PostStringFunction      DW      0
 
@@ -2972,7 +2972,7 @@ F_GetStringInputOffset1:
 
 EndP            F_GetStringInputOffset
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawStringInput Far
 
@@ -3044,7 +3044,7 @@ F_DrawStringInput2:
 EndP            F_DrawStringInput
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PreStringInput Far
 
@@ -3074,7 +3074,7 @@ F_PreStringInput2:
 
 EndP            F_PreStringInput
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostStringInput Far
 
@@ -3210,7 +3210,7 @@ F_PostStringInput9:
 
 EndP            F_PostStringInput
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_GotoEmptyList Far
 
@@ -3224,7 +3224,7 @@ Proc            F_GotoEmptyList Far
 
 EndP            F_GotoEmptyList
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSampleToggle
 
@@ -3278,7 +3278,7 @@ GetSampleToggle1:
 
 EndP            GetSampleToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetInstrumentToggle
 
@@ -3330,7 +3330,7 @@ GetInstrumentToggle2:
 
 EndP            GetInstrumentToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetLoadSampleToggle
 
@@ -3386,7 +3386,7 @@ GetLoadSampleToggle1:
 
 EndP            GetLoadSampleToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetPatternSegmentToggle
 
@@ -3407,7 +3407,7 @@ GetPatternSegmentToggle1:
 
 EndP            GetPatternSegmentToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetMusicSegmentToggle
 
@@ -3428,7 +3428,7 @@ GetMusicSegmentToggle1:
 
 EndP            GetMusicSegmentToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SampleToggle
 
@@ -3513,7 +3513,7 @@ SampleToggleEnd:
 
 EndP            SampleToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            InstrumentToggle
 
@@ -3551,7 +3551,7 @@ InstrumentToggle3:
 
 EndP            InstrumentToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            LoadSampleToggle
 
@@ -3627,7 +3627,7 @@ LoadSampleToggle1:
 
 EndP            LoadSampleToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            PatternSegmentToggle
 
@@ -3655,7 +3655,7 @@ PatternSegmentToggle1:
 EndP            PatternSegmentToggle
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MusicSegmentToggle
 
@@ -3676,7 +3676,7 @@ ENDIF
 
 EndP            MusicSegmentToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseToggle Far
 
@@ -3690,7 +3690,7 @@ Proc            MouseToggle Far
 
 EndP            MouseToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawToggle Far
 
@@ -3753,7 +3753,7 @@ F_DrawToggle2:
 
 EndP            F_DrawToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PreToggle Far
 
@@ -3782,7 +3782,7 @@ Proc            F_PreToggle Far
 
 EndP            F_PreToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostToggle Far
 
@@ -3843,7 +3843,7 @@ F_PostToggle6:
 
 EndP            F_PostToggle
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetInstrument3Num
 
@@ -3859,7 +3859,7 @@ Proc            GetInstrument3Num
 
 EndP            GetInstrument3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInstrument3Num               ; AX = value.
 
@@ -3924,7 +3924,7 @@ SetInstrument3Num3:
 
 EndP            SetInstrument3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSample5Num
 
@@ -3939,7 +3939,7 @@ Proc            GetSample5Num
 
 EndP            GetSample5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetLoadSample5Num
 
@@ -3958,7 +3958,7 @@ Proc            GetLoadSample5Num
 
 EndP            GetLoadSample5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetInst5Num
 
@@ -3973,7 +3973,7 @@ Proc            GetInst5Num
 
 EndP            GetInst5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetSample5Num               ; AX = value.
 
@@ -3993,7 +3993,7 @@ Proc            SetSample5Num               ; AX = value.
 
 EndP            SetSample5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetLoadSample5Num               ; AX = value.
 
@@ -4011,7 +4011,7 @@ Proc            SetLoadSample5Num               ; AX = value.
 
 EndP            SetLoadSample5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            SetInst5Num
 
@@ -4027,7 +4027,7 @@ Proc            SetInst5Num
 
 EndP            SetInst5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseNumberDecrement Far
 
@@ -4041,7 +4041,7 @@ Proc            MouseNumberDecrement Far
 
 EndP            MouseNumberDecrement
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            MouseNumberIncrement Far
 
@@ -4055,7 +4055,7 @@ Proc            MouseNumberIncrement Far
 
 EndP            MouseNumberIncrement
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Draw3Num Far
 
@@ -4110,7 +4110,7 @@ Proc            F_Draw3Num Far
 
 EndP            F_Draw3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Pre3Num Far
 
@@ -4130,7 +4130,7 @@ Proc            F_Pre3Num Far
 
 EndP            F_Pre3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Post3Num Far
 
@@ -4306,7 +4306,7 @@ F_Post3Num21:
 
 EndP            F_Post3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ConvEAX2Num Far
 
@@ -4345,7 +4345,7 @@ F_ConvEAX2Num2:
 
 EndP            F_ConvEAX2Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Draw5Num Far
 
@@ -4400,7 +4400,7 @@ Proc            F_Draw5Num Far
 
 EndP            F_Draw5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Pre5Num Far
 
@@ -4420,7 +4420,7 @@ Proc            F_Pre5Num Far
 
 EndP            F_Pre5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Post5Num Far
 
@@ -4589,7 +4589,7 @@ F_Post5Num21:
 
 EndP            F_Post5Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawHeader Far
 
@@ -4652,7 +4652,7 @@ F_DrawHeader2:
 
 EndP            F_DrawHeader
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawSMCChannels Far
 
@@ -4695,7 +4695,7 @@ F_DrawSMCChannels1:
 
 EndP            F_DrawSMCChannels
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ConfigButtonSetup Far
 
@@ -4763,7 +4763,7 @@ F_ConfigButtonSetup3:
 
 EndP            F_ConfigButtonSetup
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 IF NETWORKENABLED
 Proc            F_SendSongFlags
@@ -4790,7 +4790,7 @@ SendSongFlags   EQU     ;
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetControlSample Far
 
@@ -4805,7 +4805,7 @@ Proc            F_SetControlSample Far
 
 EndP            F_SetControlSample
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetControlInstrument Far
 
@@ -4888,7 +4888,7 @@ F_SetControlInstrument3:
 
 EndP            F_SetControlInstrument
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetStereo Far
 
@@ -4905,7 +4905,7 @@ Proc            F_SetStereo Far
 
 EndP            F_SetStereo
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetMono Far
 
@@ -4922,7 +4922,7 @@ Proc            F_SetMono Far
 
 EndP            F_SetMono
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetLinear Far
 
@@ -4937,7 +4937,7 @@ Proc            F_SetLinear Far
 
 EndP            F_SetLinear
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SetAmiga Far
 
@@ -4952,7 +4952,7 @@ Proc            F_SetAmiga Far
 
 EndP            F_SetAmiga
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Reset5NumInputPos Far
 
@@ -4961,7 +4961,7 @@ Proc            F_Reset5NumInputPos Far
 
 EndP            F_Reset5NumInputPos
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_NewSong Far
 
@@ -5038,7 +5038,7 @@ F_NewSongEnd:
 
 EndP            F_NewSong
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_MainMenu Far
 
@@ -5055,7 +5055,7 @@ Proc            F_MainMenu Far
 
 EndP            F_MainMenu
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ViewPattern Far
 
@@ -5065,7 +5065,7 @@ Proc            F_ViewPattern Far
 
 EndP            F_ViewPattern
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ViewVariables Far
 
@@ -5075,7 +5075,7 @@ Proc            F_ViewVariables Far
 
 EndP            F_ViewVariables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ViewOrderPan Far
 
@@ -5085,7 +5085,7 @@ Proc            F_ViewOrderPan Far
 
 EndP            F_ViewOrderPan
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_MessageEditor Far
 
@@ -5095,7 +5095,7 @@ Proc            F_MessageEditor Far
 
 EndP            F_MessageEditor
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Help Far
 
@@ -5106,7 +5106,7 @@ Proc            F_Help Far
 
 EndP            F_Help
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PlaybackMenu Far
 
@@ -5120,7 +5120,7 @@ Proc            F_PlaybackMenu Far
 
 EndP            F_PlaybackMenu
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_InfoPage Far
 
@@ -5132,7 +5132,7 @@ Proc            F_InfoPage Far
 
 EndP            F_InfoPage
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PlaySong Far
 
@@ -5143,7 +5143,7 @@ Proc            F_PlaySong Far
 
 EndP            F_PlaySong
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PlayPattern Far
 
@@ -5154,7 +5154,7 @@ Proc            F_PlayPattern Far
 
 EndP            F_PlayPattern
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PlayOrder Far
 
@@ -5165,7 +5165,7 @@ Proc            F_PlayOrder Far
 
 EndP            F_PlayOrder
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PlayMark Far
 
@@ -5176,7 +5176,7 @@ Proc            F_PlayMark Far
 
 EndP            F_PlayMark
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_Stop Far
 
@@ -5187,7 +5187,7 @@ Proc            F_Stop Far
 
 EndP            F_Stop
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ReinitSoundCard Far
 
@@ -5198,7 +5198,7 @@ Proc            F_ReinitSoundCard Far
 
 EndP            F_ReinitSoundCard
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_CalculateLength Far
 
@@ -5210,7 +5210,7 @@ Proc            F_CalculateLength Far
 
 EndP            F_CalculateLEngth
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DriverScreen Far
 
@@ -5221,7 +5221,7 @@ Proc            F_DriverScreen Far
 
 EndP            F_DriverScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SampleMenu Far
 
@@ -5235,7 +5235,7 @@ Proc            F_SampleMenu Far
 
 EndP            F_SampleMenu
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_InstrumentMenu Far
 
@@ -5249,7 +5249,7 @@ Proc            F_InstrumentMenu Far
 
 EndP            F_InstrumentMenu
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SampleList Far
 
@@ -5260,7 +5260,7 @@ Proc            F_SampleList Far
 
 EndP            F_SampleList
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_InstrumentList Far
 
@@ -5271,7 +5271,7 @@ Proc            F_InstrumentList Far
 
 EndP            F_InstrumentList
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_InstrumentLibrary Far
 
@@ -5282,7 +5282,7 @@ Proc            F_InstrumentLibrary Far
 
 EndP            F_InstrumentLibrary
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ReloadGravis Far
 
@@ -5293,7 +5293,7 @@ Proc            F_ReloadGravis Far
 
 EndP            F_ReloadGravis
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_SampleLibrary Far
 
@@ -5304,7 +5304,7 @@ Proc            F_SampleLibrary Far
 
 EndP            F_SampleLibrary
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileMenu Far
 
@@ -5318,7 +5318,7 @@ Proc            F_FileMenu Far
 
 EndP            F_FileMenu
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileLoad Far
 
@@ -5330,7 +5330,7 @@ Proc            F_FileLoad Far
 EndP            F_FileLoad
 
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileNew Far
 
@@ -5342,7 +5342,7 @@ Proc            F_FileNew Far
 
 EndP            F_FileNew
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileSaveCurrent Far
 
@@ -5354,7 +5354,7 @@ Proc            F_FileSaveCurrent Far
 
 EndP            F_FileSaveCurrent
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileSaveAs Far
 
@@ -5365,7 +5365,7 @@ Proc            F_FileSaveAs Far
 
 EndP            F_FileSaveAs
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileDOSShell Far
 
@@ -5377,7 +5377,7 @@ Proc            F_FileDOSShell Far
 
 EndP            F_FileDOSShell
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_FileQuit Far
 
@@ -5389,7 +5389,7 @@ Proc            F_FileQuit Far
 
 EndP            F_FileQuit
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 IF MEMORYDEBUG
 
@@ -5463,7 +5463,7 @@ DebugMsg                DB      "CX: ", 0FDh, "X, DX: ", 0FDh, "X        ", 0
 DebugCX                 DW      0
 DebugDX                 DW      0
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DrawDebug Far
 
@@ -5594,7 +5594,7 @@ F_DrawDebug5:
 EndP            F_DrawDebug
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_PostDebug Far
 
@@ -5606,7 +5606,7 @@ Proc            F_PostDebug Far
 
 EndP            F_PostDebug
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DebugUp Far
 
@@ -5617,7 +5617,7 @@ Proc            F_DebugUp Far
 
 EndP            F_DebugUp
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DebugDown Far
 
@@ -5628,7 +5628,7 @@ Proc            F_DebugDown Far
 
 EndP            F_DebugDown
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DebugPgUp Far
 
@@ -5639,7 +5639,7 @@ Proc            F_DebugPgUp Far
 
 EndP            F_DebugPgUp
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DebugPgDn Far
 
@@ -5650,7 +5650,7 @@ Proc            F_DebugPgDn Far
 
 EndP            F_DebugPgDn
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_DebugStringInput Far
 
@@ -5837,7 +5837,7 @@ EndP            F_DebugStringInput
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_ShowMIDIZxxInput Far
 
@@ -5870,7 +5870,7 @@ F_ShowMIDIZxxInput2:
 EndP            F_ShowMIDIZxxInput
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_MIDI_Up Far
 
@@ -5889,7 +5889,7 @@ F_MIDI_Up2:
 
 EndP            F_MIDI_Up
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_MIDI_Down Far
 
@@ -5904,7 +5904,7 @@ F_MIDI_Down1:
 
 EndP            F_MIDI_Down
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_MIDI_PgUp Far
 
@@ -5922,7 +5922,7 @@ F_MIDI_PgUp1:
 
 EndP            F_MIDI_PgUp
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            F_MIDI_PgDn Far
 
@@ -5941,10 +5941,10 @@ F_MIDI_PgDn1:
 
 EndP            F_MIDI_PgDn
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

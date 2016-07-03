@@ -1,15 +1,15 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Display Module!!                                                            �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Display Module!!                                                            │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386
 
 include switch.inc
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Segment         Pattern WORD Public 'Code' USE16
                 Extrn   Order:Word
@@ -64,9 +64,9 @@ ENDIF
 
                 Extrn   SetInfoLine:Far
 
-;�����������������������������������������������������������������������������Ŀ
-;� Globals                                                                     �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Globals                                                                     │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                 Global  DisplayPlus:Far
                 Global  DisplayMinus:Far
@@ -76,14 +76,14 @@ ENDIF
                 Global  Display_GetDisplayWindowData:Far
                 Global  Display_SelectDisplayList:Far
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment                 InfoPage BYTE Public 'Code' USE16
                         Assume CS:InfoPage, DS:InfoPage
 
-;�����������������������������������������������������������������������������Ŀ
-;� Variables                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Variables                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 SLAVECHANNELSIZE        EQU     128
 HOSTCHANNELSIZE         EQU     80
@@ -339,9 +339,9 @@ ENDIF
 
                         DB      0FFh            ; End of list
 
-;�����������������������������������������������������������������������������Ŀ
-;� Functions                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Functions                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
 Proc            GetChannelColour                ; Gets AH
 
@@ -382,7 +382,7 @@ GetChannelColourEnd:
 
 EndP            GetChannelColour
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DrawChannelNumbers
 
@@ -448,7 +448,7 @@ Display_HostChannel21:
 
 EndP            DrawChannelNumbers
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DrawHexAL
 
@@ -461,7 +461,7 @@ Proc            DrawHexAL
 
 EndP            DrawHexAL
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_HostChannel
                                                 ; Draw boxes first.
@@ -914,7 +914,7 @@ Display_HostChannel6:
 EndP            Display_HostChannel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Draw10Num
 
@@ -940,7 +940,7 @@ Draw10Num1:
 
 EndP            Draw10Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Draw2Num
 
@@ -961,7 +961,7 @@ Proc            Draw2Num
 
 EndP            Draw2Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Draw3Num
 
@@ -993,7 +993,7 @@ Draw3Num1:
 
 EndP            Draw3Num
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_Details
                                                 ; Draw boxes first.
@@ -1305,7 +1305,7 @@ Display_Details8:
 EndP            Display_Details
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            LoadNextData            ; Returns DS:SI to data. (unpacked)
                 Assume DS:InfoPage
@@ -1461,7 +1461,7 @@ LoadNextData1:
 
 EndP            LoadNextData
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GotoRow                         ; DS:SI points to data.
 
@@ -1534,7 +1534,7 @@ GotoRow2:
 
 EndP            GotoRow
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetBeforeRows                   ; Returns
                                                 ; CX = number of rows to show.
@@ -1633,7 +1633,7 @@ GetBeforeRows9:
 
 EndP            GetBeforeRows
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetAfterRows                   ; Returns
                         Assume DS:InfoPage
@@ -1729,7 +1729,7 @@ GetAfterRows9:
 
 EndP            GetAfterRows
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            GetCurrentPatternRows           ; Returns CX = number of rows to show.
                         Assume DS:InfoPage
@@ -1818,7 +1818,7 @@ GetCurrentPatternRows8:
 
 EndP            GetCurrentPatternRows
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DrawHilightBar
 
@@ -1841,7 +1841,7 @@ DrawHilightBar1:
 
 EndP            DrawHilightBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayTrackData
 
@@ -1918,7 +1918,7 @@ DisplayTrackData6:
 
 EndP            DisplayTrackData
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show5Channel
 
@@ -2089,7 +2089,7 @@ Show5ChannelEnd:
 
 EndP            Show5Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_5Channel
                         Assume DS:InfoPage
@@ -2165,7 +2165,7 @@ Display_5Channel4:
 EndP            Display_5Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show8Channel
 
@@ -2305,7 +2305,7 @@ Show8ChannelEnd:
 
 EndP            Show8Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_8Channel
                         Assume DS:InfoPage
@@ -2381,7 +2381,7 @@ Display_8Channel4:
 EndP            Display_8Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show10Channel
 
@@ -2541,7 +2541,7 @@ Show10Channel10:
 
 EndP            Show10Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_10Channel
                         Assume DS:InfoPage
@@ -2618,7 +2618,7 @@ Display_10Channel4:
 EndP            Display_10Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Process3CharacterRow
 
@@ -2768,7 +2768,7 @@ Show18Channel7:
 
 EndP            Process3CharacterRow
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show18Channel
 
@@ -2796,7 +2796,7 @@ Show18ChannelEnd:
 
 EndP            Show18Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_18Channel
                         Assume DS:InfoPage
@@ -2872,7 +2872,7 @@ Display_18Channel4:
 EndP            Display_18Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show24Channel
 
@@ -2895,7 +2895,7 @@ Show24Channel1:
 
 EndP            Show24Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_24Channel
                         Assume DS:InfoPage
@@ -2972,7 +2972,7 @@ Display_24Channel4:
 EndP            Display_24Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show36Channel
 
@@ -3123,7 +3123,7 @@ Show36Channel9:
 
 EndP            Show36Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_36Channel
                         Assume DS:InfoPage
@@ -3197,7 +3197,7 @@ Display_36Channel4:
 EndP            Display_36Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Show64Channel
                                         ; DS:SI points to stuff.
@@ -3300,7 +3300,7 @@ Show64Channel9:
 
 EndP            Show64Channel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_64Channel
                         Assume DS:InfoPage
@@ -3360,7 +3360,7 @@ Display_64Channel4:
 EndP            Display_64Channel
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_Variables
 
@@ -3424,7 +3424,7 @@ Display_Variables3:
 
 EndP            Display_Variables
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_NoteDots                        ; Draw boxes first.
                                 Assume DS:InfoPage
@@ -3566,7 +3566,7 @@ Display_Dots8:
 
 EndP            Display_NoteDots
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Comment ~
 
@@ -3719,7 +3719,7 @@ EndP            Display_SampleDots
 
 ~
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DrawDisplayData Far
 
@@ -3817,7 +3817,7 @@ DisplayData3:
 EndP            DrawDisplayData
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            PostDisplayData Far
 
@@ -3837,7 +3837,7 @@ PostDisplayData1:
 
 EndP            PostDisplayData
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayUp Far
                         Assume DS:InfoPage
@@ -3852,7 +3852,7 @@ Proc            DisplayUp Far
 EndP            DisplayUp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayDown Far
                         Assume DS:InfoPage
@@ -3871,7 +3871,7 @@ DisplayDown1:
 EndP            DisplayDown
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayPlus Far
 
@@ -3882,7 +3882,7 @@ Proc            DisplayPlus Far
 
 EndP            DisplayPlus
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayMinus Far
 
@@ -3893,7 +3893,7 @@ Proc            DisplayMinus Far
 
 EndP            DisplayMinus
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayInsert Far
                 Assume DS:InfoPage
@@ -3956,7 +3956,7 @@ DisplayInsert1:
 EndP            DisplayInsert
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayDelete Far
                 Assume DS:InfoPage
@@ -4017,7 +4017,7 @@ DisplayDelete1:
 EndP            DisplayDelete
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayNext Far
                         Assume DS:InfoPage
@@ -4038,7 +4038,7 @@ DisplayNext1:
 EndP            DisplayNext
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayPrevious Far
 
@@ -4055,7 +4055,7 @@ DisplayPrevious1:
 
 EndP            DisplayPrevious
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayAltUp Far
                         Assume DS:InfoPage
@@ -4090,7 +4090,7 @@ DisplayAltUp1:
 EndP            DisplayAltUp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayAltDown Far
                         Assume DS:InfoPage
@@ -4120,7 +4120,7 @@ DisplayAltDown1:
 EndP            DisplayAltDown
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayPageUp Far
                         Assume DS:InfoPage
@@ -4147,7 +4147,7 @@ DisplayPageUp1:
 EndP            DisplayPageUp
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayPageDown Far
                         Assume DS:InfoPage
@@ -4174,7 +4174,7 @@ DisplayPageDown1:
 EndP            DisplayPageDown
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayHome Far
                 Assume DS:InfoPage
@@ -4187,7 +4187,7 @@ Proc            DisplayHome Far
 EndP            DisplayHome
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayEnd Far
                 Assume DS:InfoPage
@@ -4201,7 +4201,7 @@ Proc            DisplayEnd Far
 EndP            DisplayEnd
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayToggleChannel Far
 
@@ -4213,7 +4213,7 @@ Proc            DisplayToggleChannel Far
 
 EndP            DisplayToggleChannel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplaySoloChannel Far
 
@@ -4225,7 +4225,7 @@ Proc            DisplaySoloChannel Far
 
 EndP            DisplaySoloChannel
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 OldEBX          DD      0
 OldECX          DD      0
@@ -4268,7 +4268,7 @@ DisplayUpdateScreen1:
 
 EndP            DisplayUpdateScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayToggleStereo Far
                 Assume DS:InfoPage
@@ -4296,7 +4296,7 @@ DisplayToggleStereo1:
 EndP            DisplayToggleStereo
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_GetDisplayWindowData Far
 
@@ -4310,7 +4310,7 @@ Proc            Display_GetDisplayWindowData Far
 
 EndP            DIsplay_GetDisplayWindowData
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_GotoPattern Far
 
@@ -4339,7 +4339,7 @@ Display_GotoPattern1:
 EndP            Display_GotoPattern
                 Assume DS:Nothing
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_SpaceBar Far
                 Assume DS:InfoPage
@@ -4349,7 +4349,7 @@ Proc            Display_SpaceBar Far
 
 EndP            Display_SpaceBar
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayToggleVelocity Far
 
@@ -4367,7 +4367,7 @@ DisplayToggleVelocity1:
 
 EndP            DisplayToggleVelocity
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayToggleInstrument Far
 
@@ -4385,7 +4385,7 @@ DisplayToggleInstrument1:
 
 EndP            DisplayToggleInstrument
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            DisplayToggleReverse Far
 
@@ -4396,7 +4396,7 @@ Proc            DisplayToggleReverse Far
 
 EndP            DisplayToggleReverse
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_SelectDisplayList Far
 
@@ -4406,7 +4406,7 @@ Proc            Display_SelectDisplayList Far
 
 EndP            Display_SelectDisplayList
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Display_FullScreen Far
 
@@ -4464,7 +4464,7 @@ Display_FullScreen4:
 
 EndP            Display_FullScreen
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 IF SPECTRUMANALYSER
 
@@ -4476,10 +4476,10 @@ EndP            Display_FourierStart
 
 ENDIF
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 End

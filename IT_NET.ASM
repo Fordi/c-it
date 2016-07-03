@@ -1,6 +1,6 @@
-;�����������������������������������������������������������������������������Ŀ
-;� Network Module                                                              �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Network Module                                                              │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
                         Jumps
                         .386P
@@ -24,9 +24,9 @@ NUMPROVIDEDFUNCTIONS  EQU 16    ; Number of functions (DW Offsets) provided by
 
 ; Interface
 
-;�����������������������������������������������������������������������������Ŀ
-;� Externals                                                                   �
-;�������������������������������������������������������������������������������
+;┌─────────────────────────────────────────────────────────────────────────────┐
+;│ Externals                                                                   │
+;└─────────────────────────────────────────────────────────────────────────────┘
 
         Extrn   D_ClearFileName:Far
 
@@ -93,7 +93,7 @@ EndS
 Segment         SongData PARA Public 'Data'
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
         Public  Network_DriverScreen
         Public  Network_DrawDriverScreen
@@ -112,7 +112,7 @@ EndS
         Public  Network_QueueSampleData
         Public  Network_SendSongDataInformation
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 ;
 ; Not used?
 ;
@@ -120,12 +120,12 @@ EndS
 ;                        Assume  CS:Network, DS:Nothing, ES:Nothing
 ;EndS
 ;
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment         DiskData PARA Public 'Data'
 EndS
 
-;�������������������������������������������������������������������������������
+;═══════════════════════════════════════════════════════════════════════════════
 
 Segment         Pattern BYTE Public 'Code' USE16
         Extrn   PatternDataArea:Word
@@ -147,7 +147,7 @@ Segment                 Disk DWORD Public 'Code' USE16
         Extrn   DiskDataArea:Word
         Extrn   D_GotoStartingDirectory:Far
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 ;******************** THESE BLOCKS CANNOT CHANGE ORDER ************************
 
@@ -189,7 +189,7 @@ NetworkDriver_Update            DD      Network_EmptyFunction
 NetworkDriver_ConnectionStatus  DD      Network_EmptyFunction
         DD      NUMPROVIDEDFUNCTIONS - ($-Offset NetworkDriverFunctions)/4 Dup (0)
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 DriverIdentification    DB      "Impulse Tracker Network Driver"
 DriverMask              DB      "IT*.NET", 0
@@ -256,7 +256,7 @@ DestinationOffset       DD      0
 
 PatternModifiedTable    DB      200 Dup (0)      ; Bit field for 200 patterns
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_EmptyFunction Far
 
@@ -265,7 +265,7 @@ Proc            Network_EmptyFunction Far
 
 EndP            Network_EmptyFunction
 
-;�������������������������������������������������������������������������������
+;───────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_DriverScreen Far
 
@@ -390,7 +390,7 @@ Network_DriverScreenLoadFileNamesEnd:
 
 EndP            Network_DriverScreen
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_DrawDriverScreen Far
 
@@ -485,7 +485,7 @@ Network_DrawDriverScreenEnd:
 EndP            Network_DrawDriverScreen
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_PreDriverScreen Far
 
@@ -525,7 +525,7 @@ Network_PreDriverScreenEnd:
 EndP            Network_PreDriverScreen
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_Up Far
                 Assume DS:Disk
@@ -539,7 +539,7 @@ Proc            Network_Up Far
 EndP            Network_Up
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_Down Far
 
@@ -556,7 +556,7 @@ Network_Down1:
 
 EndP            Network_Down
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_PostDriverScreen Far
 
@@ -578,7 +578,7 @@ Network_PostDriverScreen1:
 
 EndP            Network_PostDriverScreen
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_LoadDriver Far
                 Assume DS:Disk
@@ -744,7 +744,7 @@ Network_LoadDriver3:
 EndP            Network_LoadDriver
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_UnloadDriver Far
 
@@ -784,7 +784,7 @@ Proc            Network_UnloadDriver Far
 EndP            Network_UnloadDriver
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 ; PatternCycle    DW      0
 
@@ -807,7 +807,7 @@ Network_Poll1:
 
 EndP            Network_Poll
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_DecodeUserName Far      ; Given DS:SI = name
                                                 ; CX = count (including key)
@@ -849,7 +849,7 @@ Network_DecodeUserNameEnd:
 
 EndP            Network_DecodeUserName
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_Shutdown Far
 
@@ -871,7 +871,7 @@ Network_Shutdown2:
 
 EndP            Network_Shutdown
 
-;������������������������������������������������������������������������������
+;══════════════════════════════════════════════════════════════════════════════
 ;
 ; Internal structures
 ; -------------------
@@ -917,7 +917,7 @@ EndP            Network_Shutdown
 ;       Extra data: Sample Number (1), Offset (4)
 
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_CalculateCRC
                 ; Calculates CRC and appends 6 byte header
@@ -963,7 +963,7 @@ Network_CalculateCRC1:
 
 EndP            Network_CalculateCRC
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_GetSendBufferPage Near
                 ; Returns AX = EMSPageFrame
@@ -983,7 +983,7 @@ Proc            Network_GetSendBufferPage Near
 
 EndP            Network_GetSendBufferPage
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 ; Send Procedure Jump Table
 ;  Each procedure is given DS:SI = Send queue data
@@ -1021,7 +1021,7 @@ InterpretObjectTypes    DW      Offset ReceiveNetworkBlock0
                         DW      Offset ReceiveNetworkBlock8
                         DW      Offset ReceiveNetworkBlock9
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 ;
 ; Block Type 0 notes
 ;
@@ -1032,7 +1032,7 @@ InterpretObjectTypes    DW      Offset ReceiveNetworkBlock0
 ;    Val & 2, vol present
 ;    Val & 4, eff present
 ;
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock0 Near
 
@@ -1181,7 +1181,7 @@ SendNetworkBlock0_9:
 EndP            SendNetworkBlock0
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock0 Near
 
@@ -1318,7 +1318,7 @@ ReceiveNetworkBlock0_2:
 EndP            ReceiveNetworkBlock0
                 Assume ES:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock1
 
@@ -1411,7 +1411,7 @@ SendNetworkBlock1_2:
 EndP            SendNetworkBlock1
                 Assume DS:Nothing, FS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock1
 
@@ -1504,7 +1504,7 @@ ReceiveNetworkBlock1_2:
 EndP            ReceiveNetworkBlock1
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock2
 
@@ -1514,7 +1514,7 @@ Proc            SendNetworkBlock2
 
 EndP            SendNetworkBlock2
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock2
 
@@ -1532,7 +1532,7 @@ ReceiveNetworkBlock2_1:
 
 EndP            ReceiveNetworkBlock2
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock3
 
@@ -1553,7 +1553,7 @@ Proc            SendNetworkBlock3
 
 EndP            SendNetworkBlock3
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock3
 
@@ -1578,7 +1578,7 @@ ReceiveNetworkBlock3_1:
 
 EndP            ReceiveNetworkBlock3
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock4
 
@@ -1601,7 +1601,7 @@ SendNetworkBlock4_1:
 
 EndP            SendNetworkBlock4
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock4
 
@@ -1639,7 +1639,7 @@ ReceiveNetworkBlock4_1:
 
 EndP            ReceiveNetworkBlock4
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock5               ; Does not send length or
                                                 ; sample pointer.
@@ -1671,7 +1671,7 @@ Proc            SendNetworkBlock5               ; Does not send length or
 
 EndP            SendNetworkBlock5
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock5
 
@@ -1706,7 +1706,7 @@ ReceiveNetworkBlock5_1:
 
 EndP            ReceiveNetworkBlock5
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock6
 
@@ -1717,7 +1717,7 @@ Proc            SendNetworkBlock6
 
 EndP            SendNetworkBlock6
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock6
 
@@ -1744,7 +1744,7 @@ ReceiveNetworkBlock6_1:
 EndP            ReceiveNetworkBlock6
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock7
 
@@ -1754,7 +1754,7 @@ Proc            SendNetworkBlock7
 
 EndP            SendNetworkBlock7
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock7
 
@@ -1771,7 +1771,7 @@ ReceiveNetworkBlock7_1:
 
 EndP            ReceiveNetworkBlock7
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock8               ; New sample
 
@@ -1783,7 +1783,7 @@ Proc            SendNetworkBlock8               ; New sample
 
 EndP            SendNetworkBlock8
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock8            ; New sample
 
@@ -1820,7 +1820,7 @@ ReceiveNetworkBlock8_2:
 
 EndP            ReceiveNetworkBlock8
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            GetSampleLocation       ; Given BX = EMS transfer structure
                                         ; Given DX = sample number
@@ -1893,7 +1893,7 @@ GetSampleLocation5:
 
 EndP            GetSampleLocation
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            SendNetworkBlock9
 
@@ -1937,7 +1937,7 @@ SendNetworkBlock9_1:
 EndP            SendNetworkBlock9
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ReceiveNetworkBlock9
 
@@ -1976,7 +1976,7 @@ ReceiveNetworkBlock9_1:
 EndP            ReceiveNetworkBlock9
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_SendData Far
 ; Called by driver when it is able to send data
@@ -2127,7 +2127,7 @@ Network_SendDataError:
 EndP            Network_SendData
 
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 ReceiveToBlock  DB      0, 8, 16
 
@@ -2252,7 +2252,7 @@ Network_ReceiveData3:
 
 EndP            Network_ReceiveData
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_GetSendQueue Far
 
@@ -2306,7 +2306,7 @@ Network_GetSendQueue1:
 EndP            Network_GetSendQueue
                 Assume DS:Nothing
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_FinishedSendQueue Far
 
@@ -2339,7 +2339,7 @@ ENDIF
 
 EndP            Network_FinishedSendQueue
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_NewConnection Far       ; Called when this computer
                                                 ; joins a group
@@ -2366,7 +2366,7 @@ Proc            Network_NewConnection Far       ; Called when this computer
 
 EndP            Network_NewConnection
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            ResetDI
 
@@ -2380,7 +2380,7 @@ ResetDI1:
 
 EndP            ResetDI
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_QueueSampleData Far     ; Given CX = Sample number, 0 base
                                                 ; DL = ConnectionID
@@ -2454,7 +2454,7 @@ Network_QueueSampleData2:
 
 EndP            Network_QueueSampleData
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_EstablishConnection Far ; Called when a connection is
                                                 ; made to this computer
@@ -2564,7 +2564,7 @@ Network_EstablishConnection6:
 
 EndP            Network_EstablishConnection
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_AddWordToQueue Far      ; Given AX, broadcasts to all
 
@@ -2583,7 +2583,7 @@ Network_AddWordToQueue0:
 
 EndP            Network_AddWordToQueue
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_UpdatePatternIfIdle Far
 
@@ -2633,7 +2633,7 @@ EndP            Network_UpdatePattern
 
 EndP            Network_UpdatePatternIfIdle
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_EnsureNoNetwork Far
 
@@ -2655,7 +2655,7 @@ Network_EnsureNoNetwork1:
 
 EndP            Network_EnsureNoNetwork
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_SendSampleHeader Far
 
@@ -2674,7 +2674,7 @@ Network_SendSampleHeader1:
 
 EndP            Network_SendSampleHeader
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_SendInstrumentHeader Far
 
@@ -2693,7 +2693,7 @@ Network_SendInstrumentHeader1:
 
 EndP            Network_SendInstrumentHeader
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 Proc            Network_SendSongDataInformation Far     ; CX = Count, DX = offset
 
@@ -2713,7 +2713,7 @@ Network_SendSongDataInformation1:
 
 EndP            Network_SendSongDataInformation
 
-;������������������������������������������������������������������������������
+;──────────────────────────────────────────────────────────────────────────────
 
 EndS
 
